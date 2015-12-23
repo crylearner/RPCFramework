@@ -52,6 +52,7 @@ class SocketChannel(AbstractChannel):
         print('channel %s is closed' % str(self.addr))
         return self.socket.close()
     
+    
     def __str__(self):
         return str(self.socket) + str(self.addr)
     

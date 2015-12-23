@@ -3,8 +3,10 @@ Created on 2015年12月13日
 
 @author: sunshyran
 '''
+from framework.channel.Channel import AbstractChannel
 
-class RpcMessageChannel(object):
+
+class RpcMessageChannel(AbstractChannel):
     '''
     
     '''
@@ -29,7 +31,7 @@ class RpcMessageChannel(object):
         '''
         
         package = self.assembler.assembleMessage(self.serializer.serialize(message))
-        print('send ', package)
+        print('send ' + str(package))
         self._internal_channel.send(package)
         
     
@@ -40,7 +42,7 @@ class RpcMessageChannel(object):
         if error occurred raise ChannelBrokenError. if channel is closed already, raise ChannelClosedError
         '''
         message = self.deserializer.deserialize(self.assembler.assembleBytes(self._internal_channel.recv()))
-        print('recv', message)
+        print('recv ' + str(message))
         return message
     
     
